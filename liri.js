@@ -72,13 +72,12 @@ function tweets(){
 
 function music () {
 
-
-	// var clientid = 'aad4a312335049dd8c79af79ca12013f';
-	// var clientsecret = '2f91ac93fe91450a8d703e82d04ad761';
 	
 	var spotify = new Spotify({
+
 	  id: 'aad4a312335049dd8c79af79ca12013f',
 	  secret: '2f91ac93fe91450a8d703e82d04ad761'
+
 	});
 
 	spotify.search({ type: 'track', query: value }, function(err, data) {
@@ -86,10 +85,35 @@ function music () {
 	    return console.log('Error occurred: ' + err);
 	  }
 	 
-	console.log("Data: ", data); 
+	console.log("Artist: ", data.tracks.items[0].artists[0].name); 
+
+	console.log("Song Name: ", data.tracks.items[0].name); 
+
+	console.log("Link: ", data.tracks.items[0].album.href);
+
+	console.log("Album Name:  ", data.tracks.items[0].album.name);  
 	});
 
 };
+
+function dwis () {
+
+	fs.readFile("random.txt", "utf8", function(err, data){
+
+		if (err) {
+
+			return console.log(err);
+		}
+
+		
+
+
+		music();
+	})
+	
+}
+
+
 
 
 
